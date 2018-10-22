@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const SqliteToJson = require('sqlite-to-json')
 const sqlite3 = require('sqlite3')
 
