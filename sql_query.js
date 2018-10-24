@@ -35,7 +35,7 @@ db.serialize(function () {
       })
       var biggestValue = Object.values(filetypes).sort((a,b)=> a-b).slice(-1)[0] 
       var primaryExt = Object.keys(filetypes).find(ext => filetypes[ext] === biggestValue)
-      torrents[torrent.info_hash].primaryMime = mime.getType(primaryExt)
+      torrents[torrent.info_hash].primaryMime = getMimeType(primaryExt)
       // if (torrents[torrent.info_hash].primaryMime)
       //   // if (torrents[torrent.info_hash].primaryMime.split('/')[0] === 'application')
       //   if (torrents[torrent.info_hash].primaryMime === 'application/pdf')
@@ -44,3 +44,7 @@ db.serialize(function () {
   })
 })
 
+function getMimeType(extension)
+{
+  return mime.getType(extension) || 'unknown/'+extension
+}
